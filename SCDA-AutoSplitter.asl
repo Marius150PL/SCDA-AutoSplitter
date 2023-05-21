@@ -30,7 +30,7 @@ state("splintercell4"){
     int staticLoading: "Engine.dll", 0x2300C4, 0x0;
 
     // Maps
-	string32 map: "DareDSound3D_scr_rd.dll", 0x29300, 0x8C;
+    string32 map: "DareDSound3D_scr_rd.dll", 0x29300, 0x8C;
 
     // Iceland
     int cutscene0: "EchelonMenus.DLL", 0xA3B54, 0x758;
@@ -46,21 +46,21 @@ state("splintercell4"){
 
 startup{
     settings.Add("01_intro", false, "Iceland - Geothermal Plant - default off.");
-	settings.Add("02_Jail_01", true, "Kansas - Ellsworth Penitentiary");
-	settings.Add("00_HQ_01_A", true, "NYC - JBA HQ - Part 1");
-	settings.Add("03_Okhotsk_01", true, "Sea of Okhotsk");
-	settings.Add("03_Okhotsk_02", false, "Sea of Okhotsk - Part 2");
+    settings.Add("02_Jail_01", true, "Kansas - Ellsworth Penitentiary");
+    settings.Add("00_HQ_01_A", true, "NYC - JBA HQ - Part 1");
+    settings.Add("03_Okhotsk_01", true, "Sea of Okhotsk");
+    settings.Add("03_Okhotsk_02", false, "Sea of Okhotsk - Part 2");
     settings.Add("04_hotel", true, "Shanghai - Hotel");
-	settings.Add("00_HQ_03_A", true, "NYC - JBA HQ - Part 2");
-	settings.Add("05_Cozumel_01", true, "Cozumel - Cruise Ship");
-	settings.Add("05_Cozumel_02", false, "Cozumel - Cruise Ship - Part 2");
-	settings.Add("00_HQ_04", true, "NYC - JBA HQ - Part 3");
-	settings.Add("07_Kinshasa00", true, "Kinshasa");
-	settings.Add("07_Kinshasa01", false, "Kinshasa - Part 2");
-	settings.Add("07_Kinshasa02", false, "Kinshasa - Part 3");
-	settings.Add("00_HQ_05", true, "NYC - JBA HQ - Part 4");
-	settings.Add("00_HQ_05_B", false, "NYC - JBA HQ - Final Confrontation");
-	settings.Add("10_newyork_02", false, "NYC - Coast Guard Boat - check it if you do Best Ending run.");
+    settings.Add("00_HQ_03_A", true, "NYC - JBA HQ - Part 2");
+    settings.Add("05_Cozumel_01", true, "Cozumel - Cruise Ship");
+    settings.Add("05_Cozumel_02", false, "Cozumel - Cruise Ship - Part 2");
+    settings.Add("00_HQ_04", true, "NYC - JBA HQ - Part 3");
+    settings.Add("07_Kinshasa00", true, "Kinshasa");
+    settings.Add("07_Kinshasa01", false, "Kinshasa - Part 2");
+    settings.Add("07_Kinshasa02", false, "Kinshasa - Part 3");
+    settings.Add("00_HQ_05", true, "NYC - JBA HQ - Part 4");
+    settings.Add("00_HQ_05_B", false, "NYC - JBA HQ - Final Confrontation");
+    settings.Add("10_newyork_02", false, "NYC - Coast Guard Boat - check it if you do Best Ending run.");
     vars.visited = new List<String>();
 }
 
@@ -91,9 +91,9 @@ onStart{
 split{
     if(current.map == old.map){
         if(settings[current.map] && !vars.visited.Contains(current.map)){
-			vars.visited.Add(current.map);
-			return true;
-		}
+		vars.visited.Add(current.map);
+		return true;
+	}
     }
 
     if(!settings["10_newyork_02"] && current.map == "00_HQ_05_B" && current.defused == 257 && old.defused == 256){
