@@ -91,9 +91,9 @@ onStart{
 split{
     if(current.map == old.map){
         if(settings[current.map] && !vars.visited.Contains(current.map)){
-		vars.visited.Add(current.map);
-		return true;
-	}
+            vars.visited.Add(current.map);
+            return true;
+        }
     }
 
     if(!settings["10_newyork_02"] && current.map == "00_HQ_05_B" && current.defused == 257 && old.defused == 256){
