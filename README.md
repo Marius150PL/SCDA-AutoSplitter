@@ -30,6 +30,7 @@ Those settings are:
 | map | string32 | DareDSound3D_scr_rd.dll | 0x29300 | 0x8C | No | Level name as String. |
 | cutscene0 | int | EchelonMenus.DLL | 0xA3B54 | 0x758 | No | `1558` on cinematic cutscene or `1046` in like Shanghai's end cutscene, `22` in game or cutscene like Prison's beginning cutscene. Other values might be in other cases. |
 | cutscene1 | int | Engine.dll | 0xA16E38 | 0xA40 | No | `0` on cinematic cutscene and for short time in isLoading. `1065353216` in game. Other values might be in other cases. |
-| defused | short | Engine.dll | 0xE78860 | 0x78 | Yes | `256` when bomb not defused, `257` when defused. For short time in first loading sets to `257`. |
+| defused0 | short | Engine.dll | 0xE78860 | 0x78 | Yes | `256` when bomb not defused, `257` when defused. For short time in first loading sets to `257`. |
+| defused1 | int | Engine.dll | 0xE80C58 | 0x864 | Yes | `1073742080` when bomb not defused, `...81` when defused. For short time in first loading sets to `...81`. |
 | missionComplete0 | int | EchelonMenus.DLL | 0xA3CF4 | 0xC | Yes | `291` in gameplay, `306` when Mission Complete or TBC screen appears and keeps to end of video loadings to next level. Also sets to `306` when using computer. |
 | missionComplete1 | int | EchelonMenus.DLL | 0xA3D30 | 0x14 | Yes | `17` in gameplay, `19` when Mission Complete or TBC screen appears and keeps to end of video loadings to next level. Also sets to `19` when using computer. |
