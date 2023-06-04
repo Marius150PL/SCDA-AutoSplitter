@@ -37,7 +37,8 @@ state("splintercell4"){
     int cutscene1: "Engine.dll", 0xA16E38, 0xA40;
 
     // JBA HQ4 Part 2
-    short defused: "Engine.dll", 0xE78860, 0x78, 0x1C, 0x20, 0x7C, 0xE0, 0x538, 0xEEC;
+    short defused0: "Engine.dll", 0xE78860, 0x78, 0x1C, 0x20, 0x7C, 0xE0, 0x538, 0xEEC;
+    int defused1: "Engine.dll", 0xE80C58, 0x864, 0x4, 0x7EC;
 
     // Coast Guard Boat
     int missionComplete0: "EchelonMenus.DLL", 0xA3CF4, 0xC, 0x118, 0x44, 0x0, 0x4;
@@ -64,6 +65,11 @@ startup{
     vars.visited = new List<String>();
 }
 
+init{
+    timer.IsGameTimePaused = false;
+    game.Exited += (s, e) => timer.IsGameTimePaused = true;
+}
+
 isLoading{
     return (current.isLoading || current.isSaving || current.isSL || current.videoLoading != 0 || current.staticLoading != 0 || current.map == "menu");
 }
@@ -87,16 +93,19 @@ onStart{
     vars.visited.Add(current.map);
 }
 
-
 split{
     if(current.map == old.map){
         if(settings[current.map] && !vars.visited.Contains(current.map)){
-		vars.visited.Add(current.map);
-		return true;
-	}
+            vars.visited.Add(current.map);
+            return true;
+        }
     }
 
-    if(!settings["10_newyork_02"] && current.map == "00_HQ_05_B" && current.defused == 257 && old.defused == 256){
+    if(!settings["10_newyork_02"] && current.map == "00_HQ_05_B" && current.defused0 == 257 && old.defused0 == 256){
+        return true;
+    }
+
+    if(!settings["10_newyork_02"] && current.map == "00_HQ_05_B" && current.defused1 == 1073742081 && old.defused1 == 1073742080){
         return true;
     }
 
