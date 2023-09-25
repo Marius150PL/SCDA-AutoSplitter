@@ -25,7 +25,8 @@ state("splintercell4"){
     // Loading Removal
     bool isLoading: "Engine.dll", 0x22D590, 0x0;
     bool isSaving: "Engine.dll", 0xE7E4B0, 0x4;
-    bool isSL: "Engine.dll", 0x58A2F8, 0x0;
+    int isCheckpoint0: "Core.dll", 0xEEA10, 0x5C, 0xDC;
+    int isCheckpoint1: "Echelon.DLL", 0x3C2680, 0x40, 0x8, 0x80, 0x78, 0x80, 0x2E8, 0x88C;
     int videoLoading: "SplinterCell4.exe", 0x18BE0, 0x468;
     int staticLoading: "Engine.dll", 0x2300C4, 0x0;
 
@@ -71,7 +72,10 @@ init{
 }
 
 isLoading{
-    return (current.isLoading || current.isSaving || current.isSL || current.videoLoading != 0 || current.staticLoading != 0 || current.map == "menu");
+    if(current.isSaving){
+        return (current.isCheckpoint0 == 9 || current.isCheckpoint0 == 0 || current.isCheckpoint1 == 9 || current.isCheckpoint1 == 0);
+    }
+    return (current.isLoading || current.videoLoading != 0 || current.staticLoading != 0 || current.map == "menu");
 }
 
 start{

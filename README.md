@@ -24,7 +24,8 @@ Those settings are:
 |---|---|---|---|---|---|---|
 | isLoading | bool | Engine.dll | 0x22D590 | 0x0 | No | `true` on loading in game. |
 | isSaving | bool | Engine.dll | 0xE7E4B0 | 0x4 | No | `true` on saving in game. |
-| isSL | bool | Engine.dll | 0x58A2F8 | 0x0 | No | `true` on saving and loading in game. |
+| isCheckpoint0 | int | Core.dll | 0xEEA10 | 0x5C | Yes | `0` or `9` on checkpoint. |
+| isCheckpoint1 | int | Echelon.DLL | 0x3C2680 | 0x40 | Yes | `0` or `9` on checkpoint. |
 | videoLoading | int | SplinterCell4.exe | 0x18BE0 | 0x468 | No | `707` during level loadings or loading to main menu. `0` otherwise. |
 | staticLoading | int | Engine.dll | 0x2300C4 | 0x0 | No | `0` in gameplay. `1` during static loading screen. `256` in main menu and video loadings from it. `257` after video loading and before static loading. `0` and `1` values are even for very short time when finish transition to main menu. |
 | map | string32 | DareDSound3D_scr_rd.dll | 0x29300 | 0x8C | No | Level name as String. |
