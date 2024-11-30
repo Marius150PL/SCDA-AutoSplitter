@@ -1,11 +1,10 @@
 # Splinter Cell: Double Agent AutoSplitter
 
-### Autosplitter for [LiveSplit](https://github.com/LiveSplit/LiveSplit/releases) of Splinter Cell: Double Agent (PC).
+### Splinter Cell: Double Agent (PC) Autosplitter for [LiveSplit](https://github.com/LiveSplit/LiveSplit/releases).
 
 AutoSplitter remembers your visited maps, so it doesn't split on played or unchecked maps in settings even when game crashes (so don't reset timer, unless you want restart your run). Also timer pauses when game crashes or quits.
 
 To properly work you will need to have exactly as many splits, as checked boxes for maps (except for Iceland). Major levels are selected by default.
-  - If you check Iceland, timer starts when level is loaded.
   - If you check Coast Guard Boat, timer will stop on To Be Continued screen in this map, instead JBA HQ after defusing bomb. Check it if you doing Best Ending run.
 - If you check other levels, then timer will split after loading these levels.
 
@@ -22,10 +21,6 @@ Those settings are:
 
 | Name | Type | Module | OS0 | OS1 | More OSs? | Description |
 |---|---|---|---|---|---|---|
-| isLoading | bool | Engine.dll | 0x22D590 | 0x0 | No | `true` on loading in game. |
-| isSaving | bool | Engine.dll | 0xE7E4B0 | 0x4 | No | `true` on saving in game. |
-| isCheckpoint0 | int | Core.dll | 0xEEA10 | 0x5C | Yes | `0` or `9` on checkpoint. |
-| isCheckpoint1 | int | Echelon.DLL | 0x3C2680 | 0x40 | Yes | `0` or `9` on checkpoint. |
 | videoLoading | int | SplinterCell4.exe | 0x18BE0 | 0x468 | No | `707` during level loadings or loading to main menu. `0` otherwise. |
 | staticLoading | int | Engine.dll | 0x2300C4 | 0x0 | No | `0` in gameplay. `1` during static loading screen. `256` in main menu and video loadings from it. `257` after video loading and before static loading. `0` and `1` values are even for very short time when finish transition to main menu. |
 | map | string32 | DareDSound3D_scr_rd.dll | 0x29300 | 0x8C | No | Level name as String. |

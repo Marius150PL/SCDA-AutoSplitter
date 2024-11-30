@@ -23,10 +23,6 @@
 
 state("splintercell4"){	
     // Loading Removal
-    bool isLoading: "Engine.dll", 0x22D590, 0x0;
-    bool isSaving: "Engine.dll", 0xE7E4B0, 0x4;
-    int isCheckpoint0: "Core.dll", 0xEEA10, 0x5C, 0xDC;
-    int isCheckpoint1: "Echelon.DLL", 0x3C2680, 0x40, 0x8, 0x80, 0x78, 0x80, 0x2E8, 0x88C;
     int videoLoading: "SplinterCell4.exe", 0x18BE0, 0x468;
     int staticLoading: "Engine.dll", 0x2300C4, 0x0;
 
@@ -47,7 +43,7 @@ state("splintercell4"){
 }
 
 startup{
-    settings.Add("01_intro", false, "Iceland - Geothermal Plant - default off.");
+    settings.Add("01_intro", true, "Iceland - Geothermal Plant");
     settings.Add("02_Jail_01", true, "Kansas - Ellsworth Penitentiary");
     settings.Add("00_HQ_01_A", true, "NYC - JBA HQ - Part 1");
     settings.Add("03_Okhotsk_01", true, "Sea of Okhotsk");
@@ -61,9 +57,9 @@ startup{
     settings.Add("07_Kinshasa01", false, "Kinshasa - Part 2");
     settings.Add("07_Kinshasa02", false, "Kinshasa - Part 3");
     settings.Add("00_HQ_05", true, "NYC - JBA HQ - Part 4");
-    settings.Add("00_HQ_05_B", false, "NYC - JBA HQ - Final Confrontation");
+    settings.Add("00_HQ_05_B", false, "NYC - JBA HQ - Final Showdown");
     settings.Add("10_newyork_02", false, "NYC - Coast Guard Boat - check it if you do Best Ending run.");
-    vars.visited = new List<String>();
+    vars.visited = new HashSet<String>(18);
 }
 
 init{
@@ -72,23 +68,13 @@ init{
 }
 
 isLoading{
-    if(current.isSaving){
-        return (current.isCheckpoint0 == 9 || current.isCheckpoint0 == 0 || current.isCheckpoint1 == 9 || current.isCheckpoint1 == 0);
-    }
-    return (current.isLoading || current.videoLoading != 0 || current.staticLoading != 0 || current.map == "menu");
+    return (current.videoLoading != 0 || current.staticLoading != 0 || current.map == "menu");
 }
 
 start{
     if(current.map == "01_intro"){
-        if(!settings[current.map]){
-            if((current.cutscene0 == 22 && old.cutscene0 == 1558) || (current.cutscene1 > 0 && old.cutscene1 == 0)){
-                return true;
-            }
-        }
-        else{
-            if(current.videoLoading == 0 && current.staticLoading == 0){
-                return true;
-            }
+        if((current.cutscene0 == 22 && old.cutscene0 == 1558) || (current.cutscene1 > 0 && old.cutscene1 == 0)){
+            return true;
         }
     }
 }
