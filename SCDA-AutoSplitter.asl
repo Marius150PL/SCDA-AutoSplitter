@@ -64,7 +64,6 @@ startup{
 
 init{
     timer.IsGameTimePaused = false;
-    game.Exited += (s, e) => timer.IsGameTimePaused = true;
 }
 
 isLoading{
@@ -103,6 +102,10 @@ split{
     if(settings["10_newyork_02"] && current.map == "10_newyork_02" && current.missionComplete0 == 306 && current.missionComplete1 == 19){
         return true;
     }
+}
+
+exit {
+    timer.IsGameTimePaused = true;
 }
 
 onReset{
