@@ -1,6 +1,6 @@
 /***************************************************************************************\
 * Tom Clancy's Splinter Cell: Double Agent (PC) AutoSplitter.                           *
-* By Distro and Marius150PL.                                                            *
+* By Distro, Marius150PL and Skajdrovski.                                               *
 * This current version is for testing purposes only.                                    *
 * We hope it'll works for everyone.                                                     *
 * AutoSplitter remembers your visited maps, so it doesn't split on played or unchecked  *
@@ -23,7 +23,7 @@
 
 state("splintercell4"){	
     // Loading Removal
-    int videoLoading: "SplinterCell4.exe", 0x18BE0, 0x468;
+    int videoLoading: 0x18BE0, 0x468;
     int staticLoading: "Engine.dll", 0x2300C4, 0x0;
 
     // Maps
@@ -80,6 +80,7 @@ start{
 }
 
 onStart{
+    timer.IsGameTimePaused = false;
     vars.visited.Add(current.map);
 }
 
