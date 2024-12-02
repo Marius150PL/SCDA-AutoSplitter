@@ -84,7 +84,7 @@ onStart{
 }
 
 split{
-    if(current.map == old.map){
+    if(current.map != old.map && current.map != "menu"){
         if(settings[current.map] && !vars.visited.Contains(current.map)){
             vars.visited.Add(current.map);
             return true;
